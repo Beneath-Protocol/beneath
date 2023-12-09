@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import SearchBar from '../ui/searchbar'
 import logo from '../../public/assets/logo.svg'
@@ -13,10 +14,19 @@ import {
 } from "@/components/ui/menubar"
 import { Sidebar } from '../ui/sidebar'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
+import { useMessage } from '@/context/contextProvider'
+import { useEffect } from 'react'
+import Directchat from '../directchat/directchat'
+import Groupchat from '../groupchat/groupchat'
 
 
 function MailPage() {
+
+  const { sidebarstep, setSidebarStep } = useMessage();
+  // useEffect(() => {
+  //   console.log(sidebarstep)
+  // }, [sidebarstep])
+
   return (
     <div className='flex flex-col'>
 
@@ -55,22 +65,34 @@ function MailPage() {
         </Menubar> */}
 
 
-        <Sidebar options={['Inbox', 'Direct Messages', 'Group Chats', 'Compose']} />
+        <Sidebar options={['Inbox', 'Direct Messages', 'Group Chats', 'Your Spaces']} />
+        {sidebarstep === 0 &&
+          <div className='flex flex-col gap-5 p-2 shadow-lg shadow-slate-800 w-full'>
+            <Tabs defaultValue="allmails" className="w-full">
+              <TabsList className="w-full justify-between py-2">
+                <TabsTrigger value="allmails" onClick={() => setSidebarStep(2)}>
+                  All Mails
+                </TabsTrigger>
+                <TabsTrigger value="sent">Sent</TabsTrigger>
+                <TabsTrigger value="received">Received</TabsTrigger>
+                <TabsTrigger value="web3toweb2">Web3 to Web2</TabsTrigger>
+              </TabsList>
+              <TabsContent value="allmails">All Mails</TabsContent>
+              <TabsContent value="sent">Sent</TabsContent>
+              <TabsContent value="received">Received</TabsContent>
+              <TabsContent value="web3toweb2">Web3 to Web2</TabsContent>
+            </Tabs>
+          </div>
+        }
 
-        <div className='flex flex-col gap-5 p-2 shadow-lg shadow-slate-800 w-full'>
-          <Tabs defaultValue="allmails" className="w-[50vw]">
-            <TabsList className="w-full justify-between py-2">
-              <TabsTrigger value="allmails">All Mails</TabsTrigger>
-              <TabsTrigger value="sent">Sent</TabsTrigger>
-              <TabsTrigger value="recieved">Recieved</TabsTrigger>
-              <TabsTrigger value="web3toweb2">Web3 to Web2</TabsTrigger>
-            </TabsList>
-            <TabsContent value="allmails">All Mails</TabsContent>
-            <TabsContent value="sent">sent</TabsContent>
-            <TabsContent value="recieved">Recieved</TabsContent>
-            <TabsContent value="web3toweb2">Web3 to web2</TabsContent>
-          </Tabs>
-        </div>
+        {sidebarstep === 1 && (
+          <Directchat />
+        )}
+
+        {sidebarstep === 2 && (
+          <Groupchat/>
+        )}
+
 
       </div>
     </div>
