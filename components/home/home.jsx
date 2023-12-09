@@ -22,7 +22,7 @@ import Groupchat from '../groupchat/groupchat'
 
 function MailPage() {
 
-  const { sidebarstep, setSidebarStep } = useMessage();
+  const { sidebarstep} = useMessage();
   // useEffect(() => {
   //   console.log(sidebarstep)
   // }, [sidebarstep])
@@ -67,10 +67,10 @@ function MailPage() {
 
         <Sidebar options={['Inbox', 'Direct Messages', 'Group Chats', 'Your Spaces']} />
         {sidebarstep === 0 &&
-          <div className='flex flex-col gap-5 p-2 shadow-lg shadow-slate-800 w-full'>
+          <div className='flex flex-col gap-5 p-2 shadow-lg shadow-slate-800 w-full rounded-md'>
             <Tabs defaultValue="allmails" className="w-full">
               <TabsList className="w-full justify-between py-2">
-                <TabsTrigger value="allmails" onClick={() => setSidebarStep(2)}>
+                <TabsTrigger value="allmails">
                   All Mails
                 </TabsTrigger>
                 <TabsTrigger value="sent">Sent</TabsTrigger>

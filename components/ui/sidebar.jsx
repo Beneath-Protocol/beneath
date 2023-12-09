@@ -48,12 +48,13 @@ export function Sidebar({ className, options }) {
           </h2> */}
           <ScrollArea className="h-[300px] px-1 w-[20vw]">
             <div className="space-y-1 p-2">
+            <Button className="">Compose</Button>
               {options?.map((option, i) => (
                 <Button
                   key={`${option}-${i}`}
                   variant="ghost"
                   className="w-full justify-start font-normal"
-                  onClick={() => {setSidebarStep(i)}}
+                  onClick={() => { setSidebarStep(i) }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
