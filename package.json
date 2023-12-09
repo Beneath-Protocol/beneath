@@ -47,6 +47,10 @@
     },
     "dependencies": {
         "@chainlink/contracts-ccip": "^1.2.1",
+        "@radix-ui/react-menubar": "^1.0.4",
+        "@radix-ui/react-scroll-area": "^1.0.5",
+        "@radix-ui/react-slot": "^1.0.2",
+        "@radix-ui/react-tabs": "^1.0.4",
         "dotenv": "^16.0.3",
         "hardhat": "^2.19.2",
         "class-variance-authority": "^0.7.0",
