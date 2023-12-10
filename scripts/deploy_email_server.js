@@ -4,12 +4,10 @@ const fs = require("fs");
 async function main() {
 
     const lockedAmount = hre.ethers.utils.parseEther("0.001");
-    const contract = await hre.ethers.deployContract("Central", {
+    const contract = await hre.ethers.deployContract("Email_server", {
         value: lockedAmount,
     });
-
-    console.log(`${(await contract.deployed()).address}`);
-    fs.writeFile("hash",contract.address,()=>{})
+    fs.writeFile("email_server_hash",contract.address,()=>{})
 }
 main().catch((error) => {
     console.error(error);

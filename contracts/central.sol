@@ -40,7 +40,7 @@ contract Central {
             }
         }
     }
-    function get_domains(string memory domain) public view returns (Domain memory) {
+    function get_domain(string memory domain) public view returns (Domain memory) {
         return all_domains[domain];
     }
     function get_user(string memory user) public view returns (User memory) {
